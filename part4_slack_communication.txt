@@ -1,0 +1,54 @@
+
+# Slack Message to Product/Business Leader
+
+Hey fellow product manager,
+
+I hope you’re doing well! I wanted to share some quick updates on the data review I conducted and get your thoughts before moving forward. Here’s a quick rundown:
+
+## 🔍 **What I Found:**
+
+- **Missing Data:**
+  - Some user records don’t have:
+    - State information (56 entries).
+    - Sign-up source details (48 entries).
+  - Brand records missing:
+    - Brand code (234 entries).
+    - Category details (155 entries).
+    - Category codes (650 entries).
+    - Top brand indicators (612 entries).
+  - Receipt data missing:
+    - Total spent (435 entries).
+    - Item lists (440 entries).
+    - Purchase dates (448 entries).
+    - Finished and awarded date fields (over 500 entries each).
+
+- **Duplicates:**
+  - 283 duplicate user entries detected.
+  - No duplicates found in brands or receipts after review.
+
+- **Referential Integrity:**
+  - Some receipts link to user IDs that don’t exist in the user dataset. Could these be test accounts or removed users?
+
+- **Logical Inconsistencies:**
+  - 13 receipts have purchase dates occurring *after* scan dates. Any known cases like pre-orders that would explain this?
+
+---
+
+## ❓ **A Few Questions for You:**
+
+- Are there specific regions or user segments you’d like prioritized when cleaning the data?
+- Should we exclude receipts missing total spend or estimate based on similar records?
+- For missing brand categories, would grouping them under "Uncategorized" work for now?
+- Are there known data migrations that could explain the user ID mismatches in receipts?
+
+---
+
+## 🚀 **Next Steps & Considerations:**
+
+- Deduplicate user entries and standardize date fields.
+- Partition receipt data by purchase date to speed up monthly reporting. Does that align with your needs?
+- Use incremental updates in our data pipelines to improve performance and scaling without full reprocessing each time.
+
+---
+
+Let me know your thoughts or if you’d prefer a quick sync to chat through this. Thanks so much!
